@@ -8,6 +8,4 @@ import { RouterLink, RouterView } from "vue-router";
   </div>
 </template>
 
-<style>
-/* Añade tus estilos aquí */
-</style>
+<style></style>
