@@ -1,9 +1,12 @@
 package Back.back.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -15,6 +18,9 @@ public class Student {
     private String firstName;
     private String lastName;
     private String email;
+
+    @OneToMany(mappedBy = "student")
+    private List<Mark> marks;
 
     public Student() {
     }
@@ -55,6 +61,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Mark> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(List<Mark> marks) {
+        this.marks = marks;
     }
 
 }

@@ -14,7 +14,6 @@ const routes = [
     name: "CreateStudent",
     component: CreateStudent,
   },
-  // Puedes añadir más rutas aquí
 ];
 
 const router = createRouter({
