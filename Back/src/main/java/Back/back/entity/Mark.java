@@ -14,7 +14,7 @@ public class Mark {
     private Long id;
 
     private String subject;
-    private Double grade;
+    private int grade;
 
     @ManyToOne
     private Student student;
@@ -22,10 +22,10 @@ public class Mark {
     public Mark() {
     }
 
-    public Mark(String subject, Double grade, Student student) {
+    public Mark(Student student, String subject, int grade) {
+        this.student = student;
         this.subject = subject;
         this.grade = grade;
-        this.student = student;
     }
 
     public Long getId() {
@@ -44,11 +44,11 @@ public class Mark {
         this.subject = subject;
     }
 
-    public Double getGrade() {
+    public int getGrade() {
         return grade;
     }
 
-    public void setGrade(Double grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
@@ -59,4 +59,5 @@ public class Mark {
     public void setStudent(Student student) {
         this.student = student;
     }
+
 }
