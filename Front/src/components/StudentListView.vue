@@ -20,6 +20,7 @@
               <button @click="showDetails(student)">Detalles</button>
               <button @click="editStudent(student.id)">Editar</button>
               <button @click="confirmDelete(student.id)">Eliminar</button>
+              <button @click="viewMarks(student.id)">Ver Notas</button>
               <input type="hidden" :value="student.id" />
             </td>
           </tr>
@@ -105,6 +106,10 @@ const deleteStudent = async () => {
 
 const editStudent = (id) => {
   router.push(`/create-student/${id}`);
+};
+
+const viewMarks = (id) => {
+  router.push(`/students/${id}/marks`);
 };
 
 onMounted(fetchStudents);

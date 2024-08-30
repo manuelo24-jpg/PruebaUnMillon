@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 public class Mark {
@@ -17,6 +18,7 @@ public class Mark {
     private int grade;
 
     @ManyToOne
+    @JoinColumn(name = "student_id")
     private Student student;
 
     public Mark() {

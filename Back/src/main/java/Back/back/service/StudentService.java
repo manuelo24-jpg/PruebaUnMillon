@@ -1,6 +1,8 @@
 package Back.back.service;
 
+import Back.back.entity.Mark;
 import Back.back.entity.Student;
+import Back.back.repository.MarkRepository;
 import Back.back.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,12 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    @Autowired
+    private MarkRepository markRepository;
+
+    public StudentService(StudentRepository studentRepository, MarkRepository markRepository) {
         this.studentRepository = studentRepository;
+        this.markRepository = markRepository;
         initializeDatabaseIfEmpty();
     }
 
@@ -50,6 +56,20 @@ public class StudentService {
                     new Student("Charlie", "Davis", "charlie.charlton@example.com"),
                     new Student("David", "Evans", "david.raimon@example.com"));
             studentRepository.saveAll(students);
+
+            // Initialize marks after students are saved
+            List<Mark> marks = Arrays.asList(
+                    new Mark(students.get(0), "Math", 90),
+                    new Mark(students.get(0), "Science", 85),
+                    new Mark(students.get(1), "Math", 88),
+                    new Mark(students.get(1), "Science", 92),
+                    new Mark(students.get(2), "Math", 75),
+                    new Mark(students.get(2), "Science", 80),
+                    new Mark(students.get(3), "Math", 82),
+                    new Mark(students.get(3), "Science", 78),
+                    new Mark(students.get(4), "Math", 95),
+                    new Mark(students.get(4), "Science", 89));
+            markRepository.saveAll(marks);
         }
     }
 
